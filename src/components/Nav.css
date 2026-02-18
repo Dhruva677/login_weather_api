@@ -59,8 +59,25 @@
     color: #fff;
 }
 
-.nav__avatar {
+.nav__right {
     margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.nav__username {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.75);
+    max-width: 120px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.nav__avatar {
+    flex-shrink: 0;
 }
 
 .nav__avatar-icon {
@@ -79,6 +96,26 @@
 
 .nav__avatar-icon:hover {
     transform: scale(1.05);
+}
+
+.nav__logout-btn {
+    background: rgba(229, 9, 20, 0.12);
+    border: 1px solid rgba(229, 9, 20, 0.4);
+    color: #ff6b6b;
+    font-family: inherit;
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 6px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s, transform 0.15s;
+    white-space: nowrap;
+}
+
+.nav__logout-btn:hover {
+    background: rgba(229, 9, 20, 0.25);
+    color: #fff;
+    transform: translateY(-1px);
 }
 
 @media (max-width: 768px) {

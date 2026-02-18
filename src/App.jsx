@@ -1,65 +1,35 @@
-import { useState } from "react";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+import Home from "./pages/Home";
+import PrivateRoute from "./components/PrivateRoute";
 import "./index.css";
-import Nav from "./components/Nav";
-import Banner from "./components/Banner";
-import Row from "./components/Row";
-import MovieModal from "./components/MovieModal";
-import requests from "./api/requests";
 
 function App() {
-  const [selectedMovie, setSelectedMovie] = useState(null);
-
   return (
-    <div className="app">
-      <Nav />
-      <Banner onMovieClick={setSelectedMovie} />
-      <div className="app__rows">
-        <Row
-          title="🔥 Netflix Originals"
-          fetchUrl={requests.fetchNetflixOriginals}
-          isLargeRow
-          onMovieClick={setSelectedMovie}
+    <BrowserRouter>
+      <Routes>
+        {/* Default: redirect root to /login */}
+        <Route path="/" element={<Navigate to="/login" replace />} />
+
+        {/* Public routes */}
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+
+        {/* Protected route */}
+        <Route
+          path="/home"
+          element={
+            <PrivateRoute>
+              <Home />
+            </PrivateRoute>
+          }
         />
-        <Row
-          title="📈 Trending Now"
-          fetchUrl={requests.fetchTrending}
-          onMovieClick={setSelectedMovie}
-        />
-        <Row
-          title="⭐ Top Rated"
-          fetchUrl={requests.fetchTopRated}
-          onMovieClick={setSelectedMovie}
-        />
-        <Row
-          title="💥 Action"
-          fetchUrl={requests.fetchActionMovies}
-          onMovieClick={setSelectedMovie}
-        />
-        <Row
-          title="😂 Comedy"
-          fetchUrl={requests.fetchComedyMovies}
-          onMovieClick={setSelectedMovie}
-        />
-        <Row
-          title="😱 Horror"
-          fetchUrl={requests.fetchHorrorMovies}
-          onMovieClick={setSelectedMovie}
-        />
-        <Row
-          title="💕 Romance"
-          fetchUrl={requests.fetchRomanceMovies}
-          onMovieClick={setSelectedMovie}
-        />
-        <Row
-          title="🎥 Documentaries"
-          fetchUrl={requests.fetchDocumentaries}
-          onMovieClick={setSelectedMovie}
-        />
-      </div>
-      {selectedMovie && (
-        <MovieModal movie={selectedMovie} onClose={() => setSelectedMovie(null)} />
-      )}
-    </div>
+
+        {/* Catch-all */}
+        <Route path="*" element={<Navigate to="/login" replace />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
