@@ -20,8 +20,9 @@ function Login() {
             return;
         }
         setLoading(true);
+        const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
         try {
-            const res = await fetch("http://localhost:5000/login", {
+            const res = await fetch(`${API_URL}/login`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(form),

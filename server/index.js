@@ -15,6 +15,7 @@ app.use(cors({
         "http://localhost:5173",   // Vite dev server
         "http://localhost:4173",   // Vite preview
         process.env.FRONTEND_URL,  // Production (Vercel URL set as env var)
+        /\.vercel\.app$/  // Matches any Vercel deployment
     ].filter(Boolean),
     credentials: true,
 }));
