@@ -1,0 +1,140 @@
+.banner {
+    position: relative;
+    height: 100vh;
+    min-height: 600px;
+    background-size: cover;
+    background-position: center top;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: flex-end;
+}
+
+.banner__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to right,
+            rgba(0, 0, 0, 0.85) 0%,
+            rgba(0, 0, 0, 0.5) 50%,
+            transparent 100%);
+}
+
+.banner__contents {
+    position: relative;
+    z-index: 2;
+    padding: 0 48px 160px;
+    max-width: 600px;
+}
+
+.banner__badge {
+    display: inline-block;
+    background: rgba(229, 9, 20, 0.9);
+    color: #fff;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    border-radius: 4px;
+    margin-bottom: 16px;
+}
+
+.banner__title {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 900;
+    line-height: 1.1;
+    letter-spacing: -1px;
+    margin-bottom: 16px;
+    text-shadow: 2px 2px 20px rgba(0, 0, 0, 0.8);
+}
+
+.banner__description {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.85);
+    margin-bottom: 28px;
+    text-shadow: 1px 1px 10px rgba(0, 0, 0, 0.8);
+}
+
+.banner__buttons {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.banner__button {
+    padding: 12px 28px;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-family: inherit;
+}
+
+.banner__button--play {
+    background: #fff;
+    color: #000;
+}
+
+.banner__button--play:hover {
+    background: rgba(255, 255, 255, 0.85);
+    transform: scale(1.03);
+}
+
+.banner__button--info {
+    background: rgba(255, 255, 255, 0.15);
+    color: #fff;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.banner__button--info:hover {
+    background: rgba(255, 255, 255, 0.25);
+    transform: scale(1.03);
+}
+
+.banner__meta {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+}
+
+.banner__rating {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #f5c518;
+}
+
+.banner__year {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 2px 8px;
+    border-radius: 4px;
+}
+
+.banner__fadeBottom {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 200px;
+    background: linear-gradient(to top, #0a0a0f 0%, transparent 100%);
+    z-index: 1;
+}
+
+@media (max-width: 768px) {
+    .banner__contents {
+        padding: 0 20px 140px;
+    }
+
+    .banner__title {
+        font-size: 1.8rem;
+    }
+
+    .banner__description {
+        font-size: 0.875rem;
+    }
+}
